@@ -1,0 +1,9 @@
+#----- Reserva Primera -------------
+Primera.Fecha		: hola
+Primera.Lugar 		: chau
+Primera.Asiento 	: Matias
+
+#----- Reserva Segunda -------------
+Segunda.Fecha 		: Matias
+Segunda.Lugar 		: chau
+Segunda.Asiento 	: Matias
