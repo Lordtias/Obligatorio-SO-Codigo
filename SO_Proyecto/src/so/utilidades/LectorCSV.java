@@ -1,46 +1,56 @@
 package so.utilidades;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+import java.util.ArrayList;
 
 public class LectorCSV {
 	
-	public void leer() throws IOException{
-		BufferedReader br = new BufferedReader(new FileReader("Texto.txt"));
+	/**
+	 * Leo un archivo para obtener las lineas.
+	 * @param archivo - Nombre del archivo
+	 * @return - Retorna una lista de lineas del archivo.
+	 */
+	public static ArrayList<String> leer(String archivo){
+		ArrayList<String> lineas = new ArrayList<String>();
+		BufferedReader br = null;
 	    try {
+	    	br = new BufferedReader(new FileReader(archivo));
 	        String line = br.readLine();
-
+	        // Sobrescribimosla primera lineaque esel cabezal.
+	        line = br.readLine();
+	        
 	        while (line != null) {
-	        	System.out.println(line);
-	        	String[] palabras = line.split(";");
-	        	for (String pal : palabras) {
-					System.out.println(pal);
-				}
+	        	lineas.add(line);
 	            line = br.readLine();
 	        }
-	    } finally {
-	        br.close();
-	    }
-	}
-	
-	public void Leer_confi() throws FileNotFoundException{
-		Properties prop = new Properties();
-	    String fileName = "Conf.txt";
-	    InputStream is = new FileInputStream(fileName);
-
-	    try {
-			prop.load(is);
+	        
+	    } catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
-	    System.out.println(prop.getProperty("Primera.Fecha"));
-	    System.out.println(prop.getProperty("Segunda.Fecha"));
+		} finally {
+	        try {
+				br.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
+	    return lineas;
+	}
+	
+	/**
+	 * Separo la linea en funcion del caracter ";"
+	 * @param linea - Linea con los datos a separar.
+	 * @return - Array de los datos separados.
+	 */
+	public static String[] separar_lineas(String linea){
+		String[] palabras = linea.split(";");
+		return palabras;
 	}
 }
