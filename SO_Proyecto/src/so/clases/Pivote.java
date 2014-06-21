@@ -24,12 +24,18 @@ public class Pivote implements IRecepcion, IComunicador {
 		this.lista_finalizado = new ArrayList<Reserva>();
 	}
 
+//	@Override
+//	public void Enviar_Reserva(Reserva unaReserva) {
+//		synchronized (planificador) {
+//			planificador.Planificar(unaReserva);
+//			//unaReserva.Ver();
+//		} 
+//	}
+	
 	@Override
 	public void Enviar_Reserva(Reserva unaReserva) {
-		synchronized (planificador) {
-			planificador.Planificar(unaReserva);
-			unaReserva.Ver();
-		} 
+		planificador.Planificar(unaReserva);
+		//unaReserva.Ver();
 	}
 
 	@Override

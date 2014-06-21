@@ -3,12 +3,10 @@
  */
 package so.clases;
 
-import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map.Entry;
 import java.util.UUID;
 
-import so.utilidades.Controlador_de_Reloj;
 
 /**
  * @author ceibal
@@ -17,7 +15,7 @@ import so.utilidades.Controlador_de_Reloj;
 public class Reserva {
 	public final UUID  id;								// Identificador de la Reserva.
 	private String mensaje;								// Mensaje que adquiere al ser procesado.
-	public final Date tiempo;							// Tiempo en que se hace la Reserva.
+	public final long tiempo;							// Tiempo en que se hace la Reserva.
 	
 	public final String evento;							// Nombre del Evento.
 	
@@ -44,10 +42,10 @@ public class Reserva {
 	 * @param sector - Nombre del sector.
 	 * @param asientos_especiales - Lista de Asientos Especiales en el Sector.
 	 */
-	public Reserva(Date tiempo, String evento, Boolean reserva_sector, String sector, String[] asientos_especiales) {
+	public Reserva(long tiempo, String evento, Boolean reserva_sector, String sector, String[] asientos_especiales) {
 		
 		this.id = UUID.randomUUID();
-		this.tiempo = tiempo;
+		this.tiempo = tiempo + System.currentTimeMillis();
 		this.evento = evento;
 		this.reserva_sector = reserva_sector;
 		this.sector = sector;
@@ -71,11 +69,11 @@ public class Reserva {
 	 * @param fila - Nombre de la Fila.
 	 * @param asientos_especiales - Lista de Asientos Especiales en la Fila.
 	 */
-	public Reserva(Date tiempo, String evento, Boolean reserva_sector, String sector,
+	public Reserva(long tiempo, String evento, Boolean reserva_sector, String sector,
 			Boolean reserva_fila, String fila, String[] asientos_especiales) {
 		
 		this.id = UUID.randomUUID();
-		this.tiempo = tiempo;
+		this.tiempo = tiempo + System.currentTimeMillis();
 		this.evento = evento;
 		this.reserva_sector = reserva_sector;
 		this.sector = sector;
@@ -100,11 +98,11 @@ public class Reserva {
 	 * @param reserva_asientos - Determina si se reservan un conjunto de asientos.
 	 * @param asientos - Tabla de Asientos a reservar y si es Especial.
 	 */
-	public Reserva(Date tiempo, String evento, Boolean reserva_sector, String sector, Boolean reserva_fila,
+	public Reserva(long tiempo, String evento, Boolean reserva_sector, String sector, Boolean reserva_fila,
 			String fila, Boolean reserva_asientos,Hashtable<Integer, String> asientos) {
 		
 		this.id = UUID.randomUUID();
-		this.tiempo = tiempo;
+		this.tiempo = tiempo + System.currentTimeMillis();
 		this.evento = evento;
 		this.reserva_sector = reserva_sector;
 		this.sector = sector;
@@ -130,11 +128,11 @@ public class Reserva {
 	 * @param asiento - Numero de Asiento.
 	 * @param especial - Determina si el Asiento es Especial.
 	 */
-	public Reserva(Date tiempo, String evento, Boolean reserva_sector, String sector, Boolean reserva_fila,
+	public Reserva(long tiempo, String evento, Boolean reserva_sector, String sector, Boolean reserva_fila,
 			String fila, Boolean reserva_asientos, int asiento, Boolean especial) {
 		
 		this.id = UUID.randomUUID();
-		this.tiempo = tiempo;
+		this.tiempo = tiempo + System.currentTimeMillis();
 		this.evento = evento;
 		this.reserva_sector = reserva_sector;
 		this.sector = sector;
@@ -152,7 +150,7 @@ public class Reserva {
 	 */
 	public void Ver(){
 		System.out.println("Identificador:                    " + id.toString());
-		System.out.println("Fecha:                            " + tiempo.toString());
+		System.out.println("Tiempo:                           " + tiempo);
 		System.out.println("Nombre del Evento:                " + evento );
 		System.out.println("Se reserva Sector?:               " + reserva_sector);
 		System.out.println("Nombre del Sector:                " + sector);
@@ -188,23 +186,23 @@ public class Reserva {
 		switch (tipo_mensaje) {
 
 		case 0:
-			this.mensaje = "Reserva realizada con Exito : " + Controlador_de_Reloj.Obtener_fecha(System.currentTimeMillis());
+			this.mensaje = "BIEN - Reserva realizada con Exito : \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
 			break;
 
 		case 1:
-			this.mensaje = "" + Controlador_de_Reloj.Obtener_fecha(System.currentTimeMillis());
+			this.mensaje = " \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
 			break;
 
 		case 2:
-			this.mensaje = "" + Controlador_de_Reloj.Obtener_fecha(System.currentTimeMillis());
+			this.mensaje = " \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
 			break;
 
 		case 3:
-			this.mensaje = "" + Controlador_de_Reloj.Obtener_fecha(System.currentTimeMillis());
+			this.mensaje = "MAL - La Reserva sobrepasa la cantidad de Asientos permitidos: \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
 			break;
 
 		default:
-			this.mensaje = "Mensaje por Defecto : " + Controlador_de_Reloj.Obtener_fecha(System.currentTimeMillis());
+			this.mensaje = "Mensaje por Defecto : \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
 			break;
 		}
 	}
@@ -216,5 +214,20 @@ public class Reserva {
 	 */
 	public String getMensage(){
 		return this.mensaje;
+	}
+
+	/**
+	 * Devuelve la cantidad de asientos espeiales de la lista "asientos".
+	 * 
+	 * @return - La cantidad.
+	 */
+	public int Cantidad_Especiales(){
+		int cantidad = 0;
+		for (String s : asientos.values()) {
+			if (s.equals("true")) {
+				cantidad++;
+			}
+		}
+		return cantidad;
 	}
 }

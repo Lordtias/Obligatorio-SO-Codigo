@@ -7,7 +7,6 @@ package so.clases;
 public class Asiento {
 	private Boolean especial; 			// Determina si un Asiento es utilizado por un discapasitado.
 	private Boolean vendido; 			// Determina si el Asiento fue vendido.
-	private Boolean ocupado; 			// Determina si el Asiento esta siendo vendido por una agencia.
 	private String nombre_fila; 		// Fila a la que pertenece el asiento
 	private int posicion;				// Posición del asiento en la fila
 	private String nombre_sector;		// Sector del lugar en donde se realiza el evento, al que pertenece el asiento
@@ -29,14 +28,6 @@ public class Asiento {
 	public void setVendido(Boolean vendido) {
 		this.vendido = vendido;
 	}
-
-	public Boolean getOcupado() {
-		return ocupado;
-	}
-	public void setOcupado(Boolean ocupado) {
-		this.ocupado = ocupado;
-	}
-
 	public String getFila_que_pertenece() {
 		return nombre_fila;
 	}
@@ -76,11 +67,18 @@ public class Asiento {
 	public Asiento(String fila_que_pertenece, int posicion, String sector_del_lugar, int precio) {
 		this.especial = false;
 		this.vendido = false;
-		this.ocupado = false;
 		this.nombre_fila = fila_que_pertenece;
 		this.posicion = posicion;
 		this.nombre_sector = sector_del_lugar;
 		this.precio = precio;
 		this.nombre = fila_que_pertenece+""+posicion+"-"+sector_del_lugar;
+	}
+	
+	public Boolean Verificar_libre(){
+		
+	}
+	
+	public void Vender(){
+		
 	}
 }

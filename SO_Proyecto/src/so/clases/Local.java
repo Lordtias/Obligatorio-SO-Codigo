@@ -35,6 +35,9 @@ public class Local{
 		return cantidad_asientos;
 	}
 	
+	public ArrayList<Sector> getListaSector(){
+		return this.lista_sectores;
+	}
 	
 	/**Constructor del Local
 	*/

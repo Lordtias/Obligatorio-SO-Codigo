@@ -51,7 +51,7 @@ public abstract class Punto_De_Venta extends Thread {
 			switch (Integer.parseInt(dato[0])) {
 			
 			case 1:// Reserva de Sector.
-				lista_reservas.add(new Reserva(Obtener_fecha(dato[1]),
+				lista_reservas.add(new Reserva(Long.parseLong((dato[1])),
 						dato[2],
 						Boolean.valueOf(dato[3]),
 						dato[4],
@@ -59,7 +59,7 @@ public abstract class Punto_De_Venta extends Thread {
 				break;
 				
 			case 2:// Reserva de una Fila en un Sector.
-				lista_reservas.add(new Reserva(Obtener_fecha(dato[1]),
+				lista_reservas.add(new Reserva(Long.parseLong((dato[1])),
 						dato[2],
 						Boolean.valueOf(dato[3]),
 						dato[4],
@@ -69,7 +69,7 @@ public abstract class Punto_De_Venta extends Thread {
 				break;
 				
 			case 3:// Reserva de un conjunto de Asientos.
-				lista_reservas.add(new Reserva(Obtener_fecha(dato[1]),
+				lista_reservas.add(new Reserva(Long.parseLong((dato[1])),
 						dato[2],
 						Boolean.valueOf(dato[3]),
 						dato[4],
@@ -80,7 +80,7 @@ public abstract class Punto_De_Venta extends Thread {
 				break;
 				
 			case 4:// Reserva de una Asiento especifico.
-				lista_reservas.add(new Reserva(Obtener_fecha(dato[1]),
+				lista_reservas.add(new Reserva(Long.parseLong((dato[1])),
 						dato[2],
 						Boolean.valueOf(dato[3]),
 						dato[4],
@@ -121,7 +121,10 @@ public abstract class Punto_De_Venta extends Thread {
 	 * @return - Lista de los fragmentos.
 	 */
 	protected String[] Obtener_Valores(String valor){
-		return valor.split("-");
+		if (valor.equals("null")) {
+			String[] nulo = {};
+			return nulo;
+		}else return valor.split("-");
 	}
 
 	/**
@@ -146,6 +149,23 @@ public abstract class Punto_De_Venta extends Thread {
 		for (Reserva a : lista_reservas) {
 			a.Ver();
 			System.out.println("----------------------------------------------------------------------");
+		}
+	}
+
+	
+	/**
+	 * Run del Hilo.
+	 */
+	@Override
+	public void run() {
+		while(! lista_reservas.isEmpty()){
+			for (Reserva R : lista_reservas) {
+				if (R.tiempo >= System.currentTimeMillis()) {
+					pivote.Enviar_Reserva(R);
+					lista_reservas.remove(R);
+					break;
+				}
+			}
 		}
 	}
 }
