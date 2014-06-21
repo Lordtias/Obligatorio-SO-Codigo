@@ -22,5 +22,8 @@ public class Controlador_de_Reloj extends Thread {
 			System.out.println(tiempo.getTime());
 		}
 	}
-
+	public synchronized static String Obtener_fecha(long mili){
+		Date a = new Date(mili);
+		return a.toString();
+	}
 }

@@ -8,13 +8,15 @@ import java.util.Hashtable;
 import java.util.Map.Entry;
 import java.util.UUID;
 
+import so.utilidades.Controlador_de_Reloj;
+
 /**
  * @author ceibal
  *
  */
 public class Reserva {
 	public final UUID  id;								// Identificador de la Reserva.
-	
+	private String mensaje;								// Mensaje que adquiere al ser procesado.
 	public final Date tiempo;							// Tiempo en que se hace la Reserva.
 	
 	public final String evento;							// Nombre del Evento.
@@ -165,13 +167,54 @@ public class Reserva {
 		System.out.println();
 		System.out.println("Se reservan muchos Asientos?:     " + reserva_asientos);
 		if (reserva_asientos == true) {
-			System.out.print("Asientos reservados:              -");
+			System.out.print("Asientos reservados:              ");
 			for (Entry<Integer, String> a: asientos.entrySet()) {
-				System.out.print("Asiento: " + a.getKey() + " Es especial? " + a.getValue() + "-");
+				System.out.print("| Asiento: " + a.getKey() + " - Especial: " + a.getValue() + " | ");
 			}
 		}else{
 			System.out.println("Asiento:                          " + asiento);
 			System.out.println("Es Especial?:                     " + especial);
 		}
+		System.out.println();
+		System.out.println("-------------------------------------------------------------------------");
+	}
+
+	/**
+	 * Le configura un mensaje a la Reserva para registar el resultado del proceso.
+	 * 
+	 * @param tipo_mensaje - Identificador del mensaje.
+	 */
+	public void Generar_Mensaje(int tipo_mensaje){
+		switch (tipo_mensaje) {
+
+		case 0:
+			this.mensaje = "Reserva realizada con Exito : " + Controlador_de_Reloj.Obtener_fecha(System.currentTimeMillis());
+			break;
+
+		case 1:
+			this.mensaje = "" + Controlador_de_Reloj.Obtener_fecha(System.currentTimeMillis());
+			break;
+
+		case 2:
+			this.mensaje = "" + Controlador_de_Reloj.Obtener_fecha(System.currentTimeMillis());
+			break;
+
+		case 3:
+			this.mensaje = "" + Controlador_de_Reloj.Obtener_fecha(System.currentTimeMillis());
+			break;
+
+		default:
+			this.mensaje = "Mensaje por Defecto : " + Controlador_de_Reloj.Obtener_fecha(System.currentTimeMillis());
+			break;
+		}
+	}
+
+	/**
+	 * Devuelve el mensajeasignado a al Reserva.
+	 * 
+	 * @return - Mensaje que se devuelve.
+	 */
+	public String getMensage(){
+		return this.mensaje;
 	}
 }

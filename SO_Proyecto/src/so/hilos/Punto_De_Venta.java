@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
 import so.clases.Reserva;
+import so.interfaces.IRecepcion;
 import so.utilidades.LectorCSV;
 
 
@@ -17,6 +18,7 @@ public abstract class Punto_De_Venta extends Thread {
 	protected String nombre;								// Nombre del Punto de Venta
 	protected String archivo_registros;						// Direccion del archivo con los regstros.
 	protected ArrayList<Reserva> lista_reservas;			// Lista de las reservas.
+	protected IRecepcion pivote;							// Clase conectaro con el Planificador.
 	
 	/**
 	 * Contstructor de la clase abstracta Putno de Venta.
@@ -24,10 +26,11 @@ public abstract class Punto_De_Venta extends Thread {
 	 * @param nombre - Nombre del Punto de Venta.
 	 * @param archivo_registros - Donde obtener los registros.
 	 */
-	public Punto_De_Venta(String nombre, String archivo_registros) {
+	public Punto_De_Venta(String nombre, String archivo_registros, IRecepcion recepcion) {
 		this.nombre = nombre;
 		this.archivo_registros = archivo_registros;
 		this.lista_reservas = new ArrayList<Reserva>();
+		this.pivote = recepcion;
 	}
 
 	/**
@@ -129,8 +132,8 @@ public abstract class Punto_De_Venta extends Thread {
 	 */
 	protected Hashtable<Integer, String> Conjunto_Asientos(String conjunto){
 		Hashtable<Integer, String> tabla = new Hashtable<Integer, String>();
-		for (String par : conjunto.split("-")) {
-			String[] num_es = par.split(",");
+		for (String par : conjunto.split(",")) {
+			String[] num_es = par.split("-");
 			tabla.put(Integer.parseInt(num_es[0]), num_es[1]);
 		}
 		return tabla;
