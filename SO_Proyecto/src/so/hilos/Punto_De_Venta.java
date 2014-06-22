@@ -55,7 +55,7 @@ public abstract class Punto_De_Venta extends Thread {
 						dato[2],
 						Boolean.valueOf(dato[3]),
 						dato[4],
-						Obtener_Valores(dato[7])));				
+						Obtener_Valores_filas(dato[5])));				
 				break;
 				
 			case 2:// Reserva de una Fila en un Sector.
@@ -63,9 +63,9 @@ public abstract class Punto_De_Venta extends Thread {
 						dato[2],
 						Boolean.valueOf(dato[3]),
 						dato[4],
-						Boolean.valueOf(dato[5]),
-						dato[6],
-						Obtener_Valores(dato[7])));
+						Boolean.valueOf(dato[6]),
+						dato[7],
+						Obtener_Valores(dato[8])));
 				break;
 				
 			case 3:// Reserva de un conjunto de Asientos.
@@ -73,10 +73,10 @@ public abstract class Punto_De_Venta extends Thread {
 						dato[2],
 						Boolean.valueOf(dato[3]),
 						dato[4],
-						Boolean.valueOf(dato[5]),
-						dato[6],
-						Boolean.valueOf(dato[8]),
-						Conjunto_Asientos(dato[9])));	
+						Boolean.valueOf(dato[6]),
+						dato[7],
+						Boolean.valueOf(dato[9]),
+						Conjunto_Asientos(dato[10])));	
 				break;
 				
 			case 4:// Reserva de una Asiento especifico.
@@ -84,11 +84,11 @@ public abstract class Punto_De_Venta extends Thread {
 						dato[2],
 						Boolean.valueOf(dato[3]),
 						dato[4],
-						Boolean.valueOf(dato[5]),
-						dato[6],
-						Boolean.valueOf(dato[8]),
-						Integer.parseInt(dato[10]),
-						Boolean.valueOf(dato[11])));
+						Boolean.valueOf(dato[6]),
+						dato[7],
+						Boolean.valueOf(dato[9]),
+						Integer.parseInt(dato[11]),
+						Boolean.valueOf(dato[12])));
 				break;
 			default:// Ninguna Reserva se realiza.
 				break;
@@ -115,7 +115,7 @@ public abstract class Punto_De_Venta extends Thread {
 	}
 
 	/**
-	 * Separa un estring en fragmentos. La division es en base a los "-"
+	 * Separa un string en fragmentos. La division es en base a los "-"
 	 * 
 	 * @param valor String que se desea fragmentar.
 	 * @return - Lista de los fragmentos.
@@ -125,6 +125,24 @@ public abstract class Punto_De_Venta extends Thread {
 			String[] nulo = {};
 			return nulo;
 		}else return valor.split("-");
+	}
+
+	/**
+	 * Separa un string en fragmentos. La division es en base a los "," y "-"
+	 * 
+	 * @param valor String que se desea fragmentar.
+	 * @return - Tabla de los fragmentos.
+	 */
+	protected Hashtable<String, String[]> Obtener_Valores_filas(String valor){
+		Hashtable<String, String[]> tabla = new Hashtable<String, String[]>();
+		if (valor.equals("null")) return tabla;
+		else{
+			for (String s : valor.split(",")) {
+				String[] dato = s.split(" ");
+				tabla.put(dato[0], dato[1].split("-"));
+			}
+			return tabla;
+		}
 	}
 
 	/**

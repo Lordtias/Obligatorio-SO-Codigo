@@ -21,10 +21,10 @@ public class Reserva {
 	
 	public final Boolean reserva_sector;				// Determina si se reservo el Sector completo.
 	public final String sector;							// Nombre del Sector.
+	public final Hashtable<String, String[]> fila_esp;	// Tabla de Filas y sus Asientos Especiales.
 	
 	public final Boolean reserva_fila;					// Determina si se reservo la Fila completa.
 	public final String fila;							// Nombre de la Fila.
-	
 	public final String[] asientos_especiales;			// Lista de los Asientos Especiales.
 	
 	public final Boolean reserva_asientos;				// Determina si se reservo un conjunto de Asientos.
@@ -40,17 +40,18 @@ public class Reserva {
 	 * @param evento - Nombre del Evento.
 	 * @param reserva_sector - Determina si se reserva el Sector completo.
 	 * @param sector - Nombre del sector.
-	 * @param asientos_especiales - Lista de Asientos Especiales en el Sector.
+	 * @param fila_esp - Lista de Filas y el conjunto de las Asientos Especiales.
 	 */
-	public Reserva(long tiempo, String evento, Boolean reserva_sector, String sector, String[] asientos_especiales) {
+	public Reserva(long tiempo, String evento, Boolean reserva_sector, String sector, Hashtable<String, String[]> fila_esp) {
 		
 		this.id = UUID.randomUUID();
 		this.tiempo = tiempo + System.currentTimeMillis();
 		this.evento = evento;
 		this.reserva_sector = reserva_sector;
 		this.sector = sector;
+		this.fila_esp = fila_esp;
 		this.reserva_fila = false;
-		this.asientos_especiales = asientos_especiales;
+		this.asientos_especiales = null;
 		this.fila = null;
 		this.reserva_asientos = false;
 		this.asientos = null;
@@ -77,6 +78,7 @@ public class Reserva {
 		this.evento = evento;
 		this.reserva_sector = reserva_sector;
 		this.sector = sector;
+		this.fila_esp = null;
 		this.reserva_fila = reserva_fila;
 		this.fila = fila;
 		this.asientos_especiales = asientos_especiales;
@@ -106,6 +108,7 @@ public class Reserva {
 		this.evento = evento;
 		this.reserva_sector = reserva_sector;
 		this.sector = sector;
+		this.fila_esp = null;
 		this.reserva_fila = reserva_fila;
 		this.fila = fila;
 		this.asientos_especiales = null;
@@ -136,6 +139,7 @@ public class Reserva {
 		this.evento = evento;
 		this.reserva_sector = reserva_sector;
 		this.sector = sector;
+		this.fila_esp = null;
 		this.reserva_fila = reserva_fila;
 		this.fila = fila;
 		this.asientos_especiales = null;
@@ -152,28 +156,38 @@ public class Reserva {
 		System.out.println("Identificador:                    " + id.toString());
 		System.out.println("Tiempo:                           " + tiempo);
 		System.out.println("Nombre del Evento:                " + evento );
-		System.out.println("Se reserva Sector?:               " + reserva_sector);
+		System.out.println("Se reserva Sector:                " + reserva_sector);
 		System.out.println("Nombre del Sector:                " + sector);
-		System.out.println("Se Reserva Fila?:                 " + reserva_fila);
+		if (reserva_sector) {
+			System.out.print("Lista de los asientos especiales: | ");
+			for (Entry<String, String[]> a : fila_esp.entrySet()) {
+				System.out.print(a.getKey()+" -");
+				for (String s : a.getValue()) {
+					System.out.print(s+"-");
+				}
+				System.out.print(" | ");
+			}
+		}
+		System.out.println();
+		System.out.println("Se Reserva Fila:                  " + reserva_fila);
 		System.out.println("Nombre de la Fila:                " + fila);
-		if (reserva_sector | reserva_fila) {
+		if (reserva_fila) {
 			System.out.print("Lista de los asientos especiales: -");
 			for (String a : asientos_especiales) {
 				System.out.print(a+"-");
 			}
 		}
 		System.out.println();
-		System.out.println("Se reservan muchos Asientos?:     " + reserva_asientos);
+		System.out.println("Se reservan muchos Asientos:      " + reserva_asientos);
 		if (reserva_asientos == true) {
 			System.out.print("Asientos reservados:              ");
 			for (Entry<Integer, String> a: asientos.entrySet()) {
-				System.out.print("| Asiento: " + a.getKey() + " - Especial: " + a.getValue() + " | ");
+				System.out.println("| Asiento: " + a.getKey() + " - Especial: " + a.getValue() + " | ");
 			}
 		}else{
 			System.out.println("Asiento:                          " + asiento);
-			System.out.println("Es Especial?:                     " + especial);
+			System.out.println("Es Especial:                      " + especial);
 		}
-		System.out.println();
 		System.out.println("-------------------------------------------------------------------------");
 	}
 
