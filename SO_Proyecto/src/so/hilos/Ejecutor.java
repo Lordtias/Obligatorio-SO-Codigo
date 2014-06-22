@@ -36,6 +36,9 @@ public class Ejecutor extends Thread {
 		while (true) {
 			Reserva aux = Ejecutar(planificador.Obtener());
 			if (aux != null) {
+				//aux.Ver();
+				System.out.println("EL MENSAJE ES: " + aux.getMensage());
+				System.out.println(" ");
 				comunicador.Comunicar_Reserva(aux);
 			}
 		}
@@ -52,6 +55,8 @@ public class Ejecutor extends Thread {
 			return null;
 		}
 		else{
+
+			unaReserva.Ver();
 			// Verifica el tipo de Reserva.
 			if (unaReserva.reserva_sector) {
 				
@@ -70,12 +75,21 @@ public class Ejecutor extends Thread {
 							else s.Vender(unaReserva.fila_esp);
 							
 							// Genera el mensaje.
-							unaReserva.Generar_Mensaje(1);
+							unaReserva.Generar_Mensaje(0);
 							
 							return unaReserva;							
+						}else{
+							// Genera el mensaje.
+							unaReserva.Generar_Mensaje(2);
+							
+							return unaReserva;	
 						}
 					}
 				}
+				// Genera el mensaje.
+				unaReserva.Generar_Mensaje(1);
+				
+				return unaReserva;
 			}
 			// Verifica el tipo de Reserva.
 			if (unaReserva.reserva_fila) {
@@ -95,12 +109,22 @@ public class Ejecutor extends Thread {
 							else f.Vender(unaReserva.asientos_especiales);
 							
 							// Genera el mensaje.
-							unaReserva.Generar_Mensaje(1);
+							unaReserva.Generar_Mensaje(0);
 							
 							return unaReserva;							
+						}else{
+							// Genera el mensaje.
+							unaReserva.Generar_Mensaje(3);
+							
+							return unaReserva;
 						}
+							
 					}
 				}
+				// Genera el mensaje.
+				unaReserva.Generar_Mensaje(1);
+				
+				return unaReserva;	
 			}
 			// Verifica el tipo de Reserva.
 			if (unaReserva.reserva_asientos) {
@@ -117,12 +141,21 @@ public class Ejecutor extends Thread {
 							f.Vender(unaReserva.asientos);
 							
 							// Genera el mensaje.
-							unaReserva.Generar_Mensaje(1);
+							unaReserva.Generar_Mensaje(0);
 							
 							return unaReserva;							
+						}else{
+							// Genera el mensaje.
+							unaReserva.Generar_Mensaje(4);
+							
+							return unaReserva;
 						}
 					}
 				}
+				// Genera el mensaje.
+				unaReserva.Generar_Mensaje(1);
+				
+				return unaReserva;
 			}
 			// Verifica el tipo de Reserva.
 			if (! unaReserva.reserva_asientos) {
@@ -133,18 +166,27 @@ public class Ejecutor extends Thread {
 						
 						//Busca la Fila del sector del Local para encontrar el Asiento.
 						Asiento a = e.getLocal().Buscar(unaReserva.sector).Buscar(unaReserva.fila).Buscar(unaReserva.asiento);
-						
+
 						// Verifica si el Asiento esta Libre y vende.
 						if (a.Esta_libre()) {
 							a.Vender(unaReserva.especial);
 							
 							// Genera el mensaje.
-							unaReserva.Generar_Mensaje(1);
+							unaReserva.Generar_Mensaje(0);
 							
 							return unaReserva;							
+						}else{
+							// Genera el mensaje.
+							unaReserva.Generar_Mensaje(5);
+							
+							return unaReserva;
 						}
 					}
 				}
+				// Genera el mensaje.
+				unaReserva.Generar_Mensaje(1);
+				
+				return unaReserva;
 			}
 			return unaReserva;
 		}

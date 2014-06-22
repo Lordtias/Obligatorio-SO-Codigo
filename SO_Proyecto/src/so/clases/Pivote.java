@@ -28,7 +28,6 @@ public class Pivote implements IRecepcion, IComunicador {
 	public void Enviar_Reserva(Reserva unaReserva) {
 		synchronized (planificador) {
 			planificador.Planificar(unaReserva);
-			unaReserva.Ver();
 		} 
 	}
 	

@@ -30,6 +30,7 @@ public class Sector {
 	 */
 	public Sector(String nombre) {
 		this.nombre = nombre;
+		this.lista_fila = new ArrayList<Fila>();
 	}
 	
 	/**

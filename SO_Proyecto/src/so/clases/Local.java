@@ -1,8 +1,5 @@
 package so.clases;
 import java.util.ArrayList;
-
-
-
 /**
  * @author usuario
  *
@@ -30,6 +27,7 @@ public class Local{
 	 */
 	public Local(String nombre){
 		this.nombre=nombre;
+		this.lista_sectores = new ArrayList<Sector>();
 	}
 	
 	/**

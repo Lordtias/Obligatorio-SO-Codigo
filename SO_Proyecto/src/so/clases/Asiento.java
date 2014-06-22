@@ -72,7 +72,7 @@ public class Asiento {
 	 * @return
 	 */
 	public Boolean Esta_libre(){
-		return this.vendido;
+		return ! this.vendido;
 	}
 	
 	/**

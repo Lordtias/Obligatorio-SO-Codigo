@@ -40,6 +40,7 @@ public class Fila {
 	public Fila(String nombre, String sector) {
 		this.nombre = nombre;
 		Sector = sector;
+		this.lista_asientos = new ArrayList<Asiento>();
 	}
 	
 	/**

@@ -197,6 +197,7 @@ public class Reserva {
 	 * @param tipo_mensaje - Identificador del mensaje.
 	 */
 	public void Generar_Mensaje(int tipo_mensaje){
+		System.out.println("ESTE ES E LTIPO DE MENSAJE: " + tipo_mensaje);
 		switch (tipo_mensaje) {
 
 		case 0:
@@ -204,15 +205,23 @@ public class Reserva {
 			break;
 
 		case 1:
-			this.mensaje = " \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
+			this.mensaje = "MAL - La reserva no pertenece a ningun Evento: \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
 			break;
 
 		case 2:
-			this.mensaje = " \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
+			this.mensaje = "MAL - El Sector o algunos de los Asientos correspondientes ya han sido Reservados \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
 			break;
 
 		case 3:
-			this.mensaje = "MAL - La Reserva sobrepasa la cantidad de Asientos permitidos: \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
+			this.mensaje = "MAL -  La Fila o algunos de los Asientos correspondientes ya han sido Reservados \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
+			break;
+
+		case 4:
+			this.mensaje = "MAL -  El conjunto de Asientos o algunos de ellos ya han sidos Reservados \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
+			break;
+
+		case 5:
+			this.mensaje = "MAL -  El Asiento ya ha sido Reservado \n Comienza: "+tiempo+" Finalizada: " + System.currentTimeMillis();
 			break;
 
 		default:
@@ -244,4 +253,18 @@ public class Reserva {
 		}
 		return cantidad;
 	}
+
+	/**
+	 * Cuenta la cantidad de Asientos Especiales por Reserva de Sector.
+	 * 
+	 * @return - Cantidad de Asientos.
+	 */
+	public int Cantidad_Especiales_Sector(){
+		int contador=0;
+		for (Entry<String, String[]> e : fila_esp.entrySet()) {
+			contador += e.getValue().length;
+		}
+		return contador;
+	}
+
 }
