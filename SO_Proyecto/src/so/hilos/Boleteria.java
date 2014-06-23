@@ -20,7 +20,13 @@ public class Boleteria extends Punto_De_Venta{
 		this.tipos_reserva = tipos;
 	}
 
-	/*Constructor de la Boleteria*/
+	/**
+	 * Constructor de Boleteria.
+	 * 
+	 * @param nombre - Nombre de la Boleteria.
+	 * @param archivo_registros - Direccion al Archivo con los registros.
+	 * @param recepcion - El recepcionador de las Reservas.
+	 */
 	public Boleteria(String nombre, String archivo_registros, IRecepcion recepcion) {
 		super(nombre, archivo_registros, recepcion);
 		this.tipos_reserva = "3-4";

@@ -1,9 +1,6 @@
 package so.clases;
 import java.util.ArrayList;
-/**
- * @author usuario
- *
- */
+
 public class Local{
 	
 	private String nombre;						// Nombre de local.

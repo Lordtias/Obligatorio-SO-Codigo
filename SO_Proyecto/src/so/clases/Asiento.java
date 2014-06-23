@@ -1,9 +1,5 @@
 package so.clases;
-/**
- * Clase Asiento
- * @author usuario
- *
- */
+
 public class Asiento {
 	private Boolean especial; 			// Determina si un Asiento es utilizado por un discapasitado.
 	private Boolean vendido; 			// Determina si el Asiento fue vendido.

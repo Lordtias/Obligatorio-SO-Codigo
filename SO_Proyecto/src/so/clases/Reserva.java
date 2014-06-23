@@ -1,19 +1,12 @@
-/**
- * 
- */
 package so.clases;
 
 import java.util.Hashtable;
 import java.util.Map.Entry;
 import java.util.UUID;
 
-
-/**
- * @author ceibal
- *
- */
 public class Reserva {
 	public final UUID  id;								// Identificador de la Reserva.
+	public final String punto_de_venta;					// Nombre del Punto de Venta que hizo la Reserva.
 	private String mensaje;								// Mensaje que adquiere al ser procesado.
 	public final long tiempo;							// Tiempo en que se hace la Reserva.
 	
@@ -42,9 +35,10 @@ public class Reserva {
 	 * @param sector - Nombre del sector.
 	 * @param fila_esp - Lista de Filas y el conjunto de las Asientos Especiales.
 	 */
-	public Reserva(long tiempo, String evento, Boolean reserva_sector, String sector, Hashtable<String, String[]> fila_esp) {
+	public Reserva(String nombre, long tiempo, String evento, Boolean reserva_sector, String sector, Hashtable<String, String[]> fila_esp) {
 		
 		this.id = UUID.randomUUID();
+		this.punto_de_venta = nombre;
 		this.tiempo = tiempo + System.currentTimeMillis();
 		this.evento = evento;
 		this.reserva_sector = reserva_sector;
@@ -70,10 +64,11 @@ public class Reserva {
 	 * @param fila - Nombre de la Fila.
 	 * @param asientos_especiales - Lista de Asientos Especiales en la Fila.
 	 */
-	public Reserva(long tiempo, String evento, Boolean reserva_sector, String sector,
+	public Reserva(String nombre, long tiempo, String evento, Boolean reserva_sector, String sector,
 			Boolean reserva_fila, String fila, String[] asientos_especiales) {
 		
 		this.id = UUID.randomUUID();
+		this.punto_de_venta = nombre;
 		this.tiempo = tiempo + System.currentTimeMillis();
 		this.evento = evento;
 		this.reserva_sector = reserva_sector;
@@ -100,10 +95,11 @@ public class Reserva {
 	 * @param reserva_asientos - Determina si se reservan un conjunto de asientos.
 	 * @param asientos - Tabla de Asientos a reservar y si es Especial.
 	 */
-	public Reserva(long tiempo, String evento, Boolean reserva_sector, String sector, Boolean reserva_fila,
+	public Reserva(String nombre, long tiempo, String evento, Boolean reserva_sector, String sector, Boolean reserva_fila,
 			String fila, Boolean reserva_asientos,Hashtable<Integer, String> asientos) {
 		
 		this.id = UUID.randomUUID();
+		this.punto_de_venta = nombre;
 		this.tiempo = tiempo + System.currentTimeMillis();
 		this.evento = evento;
 		this.reserva_sector = reserva_sector;
@@ -131,10 +127,11 @@ public class Reserva {
 	 * @param asiento - Numero de Asiento.
 	 * @param especial - Determina si el Asiento es Especial.
 	 */
-	public Reserva(long tiempo, String evento, Boolean reserva_sector, String sector, Boolean reserva_fila,
+	public Reserva(String nombre, long tiempo, String evento, Boolean reserva_sector, String sector, Boolean reserva_fila,
 			String fila, Boolean reserva_asientos, int asiento, Boolean especial) {
 		
 		this.id = UUID.randomUUID();
+		this.punto_de_venta = nombre;
 		this.tiempo = tiempo + System.currentTimeMillis();
 		this.evento = evento;
 		this.reserva_sector = reserva_sector;
@@ -154,6 +151,7 @@ public class Reserva {
 	 */
 	public void Ver(){
 		System.out.println("Identificador:                    " + id.toString());
+		System.out.println("Punto de Venta:                   " + punto_de_venta);
 		System.out.println("Tiempo:                           " + tiempo);
 		System.out.println("Nombre del Evento:                " + evento );
 		System.out.println("Se reserva Sector:                " + reserva_sector);
@@ -197,7 +195,6 @@ public class Reserva {
 	 * @param tipo_mensaje - Identificador del mensaje.
 	 */
 	public void Generar_Mensaje(int tipo_mensaje){
-		System.out.println("ESTE ES E LTIPO DE MENSAJE: " + tipo_mensaje);
 		switch (tipo_mensaje) {
 
 		case 0:

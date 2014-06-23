@@ -1,0 +1,64 @@
+[Tipo de Reserva]
+	Numerico:
+		1 - Reserva de Sector
+		2 - Reserva de Fila
+		3 - Reserva de un conjunto de Asientos
+		4 - Reserva de un Asiento
+
+[Tiempo a ejecutar Reserva]
+	Numero que representan los milisegundos desde que se crea la Reserva
+	hasta que sea ejecutada.
+		Un segundo equivale a 1000 milisegundos.
+
+[Nombre del Evento]
+	Texto:
+		Nombre del evento.
+
+[Reserva Sector]
+	Boolean:
+		true - Afirmacionde la reserva.
+		false - Negacion de la reserva o valor por defecto
+
+[Sector]
+	Texto:
+		Nombre del Sector.
+
+[Tabla de Asientos]
+	Tabla que especifica que Asientosde que fila son Especiales.
+		<nombre de la fila><especio><posiciones separadas por guion medio> Ej:a 1-2-6
+		null - En caso que la reserva no sea de un sector.
+
+[Reserva Fila]
+	Boolean:
+		true - Afirmacionde la reserva.
+		false - Negacion de la reserva o valor por defecto
+
+[Fila]
+	Texto:
+		Nombre de la Fila
+		null - Sin informacion
+
+[Asientos Especiales]
+	Lista de numeros de los Asientos Especiales separados por guion medio.
+		null - Sin informacion
+
+[Reserva Asientos]
+	Boolean:
+		true - Afirmacionde la reserva.
+		false - Negacion de la reserva o valor por defecto
+
+[Asientos]
+	Tabla de pares de numericos y cadenas de caracteres separados por un guion
+	 y cadauno separado por coma.
+		<posicion Asiento>-<true o false: Especial>,
+		null - Sin informacion
+
+[Asiento]
+	Numerico:
+		Numero del Asiento.
+		null - Sin informacion
+
+[Especial]
+	Boolean:
+		true - Afirmacionde la reserva.
+		false - Negacion de la reserva o valor por defecto

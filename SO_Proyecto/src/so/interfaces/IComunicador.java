@@ -1,10 +1,6 @@
-/**
- * 
- */
 package so.interfaces;
 
 import so.clases.Reserva;
-
 
 public interface IComunicador {
 

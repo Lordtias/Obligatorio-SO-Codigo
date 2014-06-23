@@ -1,6 +1,3 @@
-/**
- * 
- */
 package so.clases;
 
 import java.util.ArrayList;
@@ -10,15 +7,16 @@ import so.interfaces.IComunicador;
 import so.interfaces.IPlanificador;
 import so.interfaces.IRecepcion;
 
-/**
- * @author ceibal
- *
- */
 public class Pivote implements IRecepcion, IComunicador {
 	
-	private IPlanificador planificador;
-	private ArrayList<Reserva> lista_finalizado;
+	private IPlanificador planificador;				// Planificador al cual le manda las Reservas.
+	private ArrayList<Reserva> lista_finalizado;	// Lista de Reservas Finalizadas.
 
+	/**
+	 * Constructor del Pivote.
+	 * 
+	 * @param planificador - El Planificador.
+	 */
 	public Pivote(IPlanificador planificador) {
 		this.planificador = planificador;
 		this.lista_finalizado = new ArrayList<Reserva>();
@@ -30,7 +28,6 @@ public class Pivote implements IRecepcion, IComunicador {
 			planificador.Planificar(unaReserva);
 		} 
 	}
-	
 
 	@Override
 	public Reserva Consultar_Reserva(UUID id) {
@@ -49,7 +46,5 @@ public class Pivote implements IRecepcion, IComunicador {
 		synchronized (lista_finalizado) {
 			lista_finalizado.add(unaReserva);
 		}
-		
 	}
-
 }

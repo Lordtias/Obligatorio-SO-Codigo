@@ -1,0 +1,13 @@
+
+4;6000;Evento - Prueba;false;B;null;false;e;null;false;null;5;false;
+4;5000;Evento - Prueba;false;D;null;false;a;null;false;null;2;false;
+4;4000;Evento - Prueba;false;C;null;false;c;null;false;null;3;false;
+4;6000;Evento - Prueba;false;B;null;false;b;null;false;null;1;false;
+4;2000;Evento - Prueba;false;A;null;false;a;null;false;null;8;false;
+4;4000;Evento - Prueba;false;B;null;false;d;null;false;null;7;false;
+4;2000;Evento - Prueba;false;C;null;false;a;null;false;null;1;false;
+4;1000;Evento - Prueba;false;A;null;false;b;null;false;null;7;false;
+4;4000;Evento - Prueba;false;B;null;false;e;null;false;null;3;false;
+4;2000;Evento - Prueba;false;A;null;false;a;null;false;null;9;false;
+4;6000;Evento - Prueba;false;D;null;false;c;null;false;null;2;false;
+4;4000;Evento - Prueba;false;B;null;false;b;null;false;null;7;false;

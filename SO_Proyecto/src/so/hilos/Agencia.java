@@ -20,7 +20,13 @@ public class Agencia extends Punto_De_Venta {
 		this.tipos_reserva = tipos;
 	}
 	
-	/*Constructor de la Agencia*/
+	/**
+	 * Constructor de Agencia.
+	 * 
+	 * @param nombre - Nombre de la Agencia.
+	 * @param archivo_registros - Direccion al Archivo con los registros.
+	 * @param recepcion - El recepcionador de las Reservas.
+	 */
 	public Agencia(String nombre, String archivo_registros, IRecepcion recepcion) {
 		super(nombre, archivo_registros, recepcion);
 		this.tipos_reserva = "1-2";

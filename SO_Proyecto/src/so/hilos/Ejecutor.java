@@ -1,6 +1,11 @@
 package so.hilos;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import so.clases.Asiento;
 import so.clases.Evento;
@@ -12,9 +17,14 @@ import so.interfaces.IPlanificador;
 
 public class Ejecutor extends Thread {
 	
-	private IPlanificador planificador;								// Planificador de las Reservas.
-	private IComunicador comunicador;								// Comunicador de la Reserva.
-	private ArrayList<Evento> lista_eventos;						// Lista de los eventos en los que trabaja.
+	private String nombre;										// Nombre del Planificador.
+	private IPlanificador planificador;							// Planificador de las Reservas.
+	private IComunicador comunicador;							// Comunicador de la Reserva.
+	private ArrayList<Evento> lista_eventos;					// Lista de los eventos en los que trabaja.
+	private long tiempo_ejecutanto;								// Tiempo que esta ejecutando.
+	private boolean detalle;									// Ver Detalle de las reservas.
+	private Hashtable<String, Integer> cantidad_reservas_fail;	// Cantidad de Reservas fallidas.
+	private File file;											// Escritura de Archivos
 	
 	/**
 	 * Constructor del Ejecutor.
@@ -23,22 +33,72 @@ public class Ejecutor extends Thread {
 	 * @param comunicador - El comunicador el cual comunica de las Reservas Ejecutadas.
 	 * @param evento - El evento el cual va a gestionar.
 	 */
-	public Ejecutor(IPlanificador planificador, IComunicador comunicador, Evento evento) {
+	public Ejecutor(String nombre, IPlanificador planificador, IComunicador comunicador, Evento evento, boolean detalle, boolean salida_archivo) {
+		this.nombre = nombre;
 		this.planificador = planificador;
 		this.comunicador = comunicador;
 		this.lista_eventos = new ArrayList<Evento>();
 		this.lista_eventos.add(evento);
+		this.tiempo_ejecutanto = 0;
+		this.detalle = detalle;
+		this.cantidad_reservas_fail = new Hashtable<String, Integer>();
+		this.cantidad_reservas_fail.put("Reserva Sector", 0);
+		this.cantidad_reservas_fail.put("Reserva Fila", 0);
+		this.cantidad_reservas_fail.put("Reserva Asientos", 0);
+		this.cantidad_reservas_fail.put("Reserva Asiento", 0);
+		
+		if (salida_archivo)	this.file = new File(nombre+"_"+planificador.getName());
+		else this.file = null;
+	}
+	
+	/**
+	 * Escribe un texto en un Archivo.
+	 * 
+	 * @param texto
+	 */
+	private void Escribir(String texto){
+		try {
+			FileWriter w = new FileWriter(this.file, true);
+			BufferedWriter bw = new BufferedWriter(w);
+			PrintWriter wr = new PrintWriter(bw); 
+			wr.append(texto);
+			wr.append("\n");
+			wr.close();
+			bw.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
 	}
 
+	/**
+	 * Incremento la cantidad de fallos de un tipo especifico de Reservas.
+	 * @param key - Tipo de Reserva
+	 */
+	private void inc_fallo(String key){
+		this.cantidad_reservas_fail.put(key,cantidad_reservas_fail.get(key)+1);
+	}
 	
 	@Override
 	public void run() {
 		while (true) {
 			Reserva aux = Ejecutar(planificador.Obtener());
 			if (aux != null) {
-				//aux.Ver();
+				if(tiempo_ejecutanto == 0) tiempo_ejecutanto = System.currentTimeMillis();
+				
+				// Minimo detalle en consola.
 				System.out.println("EL MENSAJE ES: " + aux.getMensage());
+				System.out.println("El tiempo que lleba en ejecucion "+this.nombre+" es: " + (System.currentTimeMillis() - tiempo_ejecutanto));
+				System.out.println("CANTIDAD DE FALLOS AL RESERVAR : "+cantidad_reservas_fail.toString());
 				System.out.println(" ");
+				
+				// Escribe en un Archivo.
+				if (this.file != null) {
+					Escribir("EL MENSAJE ES: " + aux.getMensage());
+					Escribir("El tiempo que lleba en ejecucion "+this.nombre+" es: " + (System.currentTimeMillis() - tiempo_ejecutanto));
+					Escribir("CANTIDAD DE FALLOS AL RESERVAR : "+cantidad_reservas_fail.toString());
+					Escribir("\n");
+				}
+				
 				comunicador.Comunicar_Reserva(aux);
 			}
 		}
@@ -56,7 +116,7 @@ public class Ejecutor extends Thread {
 		}
 		else{
 
-			unaReserva.Ver();
+			if (detalle) unaReserva.Ver();
 			// Verifica el tipo de Reserva.
 			if (unaReserva.reserva_sector) {
 				
@@ -81,14 +141,14 @@ public class Ejecutor extends Thread {
 						}else{
 							// Genera el mensaje.
 							unaReserva.Generar_Mensaje(2);
-							
+							inc_fallo("Reserva Sector");
 							return unaReserva;	
 						}
 					}
 				}
 				// Genera el mensaje.
 				unaReserva.Generar_Mensaje(1);
-				
+				inc_fallo("Reserva Sector");
 				return unaReserva;
 			}
 			// Verifica el tipo de Reserva.
@@ -115,7 +175,7 @@ public class Ejecutor extends Thread {
 						}else{
 							// Genera el mensaje.
 							unaReserva.Generar_Mensaje(3);
-							
+							inc_fallo("Reserva Fila");
 							return unaReserva;
 						}
 							
@@ -123,7 +183,7 @@ public class Ejecutor extends Thread {
 				}
 				// Genera el mensaje.
 				unaReserva.Generar_Mensaje(1);
-				
+				inc_fallo("Reserva Fila");
 				return unaReserva;	
 			}
 			// Verifica el tipo de Reserva.
@@ -147,14 +207,14 @@ public class Ejecutor extends Thread {
 						}else{
 							// Genera el mensaje.
 							unaReserva.Generar_Mensaje(4);
-							
+							inc_fallo("Reserva Asientos");
 							return unaReserva;
 						}
 					}
 				}
 				// Genera el mensaje.
 				unaReserva.Generar_Mensaje(1);
-				
+				inc_fallo("Reserva Asientos");
 				return unaReserva;
 			}
 			// Verifica el tipo de Reserva.
@@ -178,14 +238,14 @@ public class Ejecutor extends Thread {
 						}else{
 							// Genera el mensaje.
 							unaReserva.Generar_Mensaje(5);
-							
+							inc_fallo("Reserva Asiento");
 							return unaReserva;
 						}
 					}
 				}
 				// Genera el mensaje.
 				unaReserva.Generar_Mensaje(1);
-				
+				inc_fallo("Reserva Asiento");
 				return unaReserva;
 			}
 			return unaReserva;

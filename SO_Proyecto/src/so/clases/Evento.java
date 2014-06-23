@@ -2,7 +2,6 @@ package so.clases;
 
 import java.util.UUID;
 
-
 public class Evento{
 	
 	private final UUID id;				// Identificador.

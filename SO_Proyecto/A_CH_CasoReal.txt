@@ -1,0 +1,4 @@
+
+1;1000;Evento - Prueba;true;A;a 1-2-3-4,b 3-4-5-6;false;null;null;false;null;null;false;
+1;4000;Evento - Prueba;true;C;b 1-2-3-4,c 3-4-5-6;false;null;null;false;null;null;false;
+1;5000;Evento - Prueba;true;B;e 1-2-3-4,a 3-4-5-6;false;null;null;false;null;null;false;

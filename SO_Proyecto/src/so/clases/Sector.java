@@ -3,11 +3,6 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map.Entry;
 
-
-/**
- * @author usuario
- *
- */
 public class Sector {
 	private String nombre;				// Nombre del Sector.
 	private ArrayList<Fila> lista_fila;	// Lista de Filas del Sector.

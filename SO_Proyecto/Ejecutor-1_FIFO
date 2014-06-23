@@ -1,0 +1,162 @@
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479567289 Finalizada: 1403479567301
+El tiempo que lleba en ejecucion Ejecutor-1 es: 4
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=0, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=0}
+
+
+EL MENSAJE ES: MAL - El Sector o algunos de los Asientos correspondientes ya han sido Reservados 
+ Comienza: 1403479567296 Finalizada: 1403479567306
+El tiempo que lleba en ejecucion Ejecutor-1 es: 23
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=0}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479568288 Finalizada: 1403479568299
+El tiempo que lleba en ejecucion Ejecutor-1 es: 999
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=0}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479568288 Finalizada: 1403479568301
+El tiempo que lleba en ejecucion Ejecutor-1 es: 1001
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=0}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479568289 Finalizada: 1403479568302
+El tiempo que lleba en ejecucion Ejecutor-1 es: 1002
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=0}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479568293 Finalizada: 1403479568304
+El tiempo que lleba en ejecucion Ejecutor-1 es: 1003
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=0}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479569291 Finalizada: 1403479569295
+El tiempo que lleba en ejecucion Ejecutor-1 es: 1995
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=0}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479569292 Finalizada: 1403479569296
+El tiempo que lleba en ejecucion Ejecutor-1 es: 1996
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=0}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479569294 Finalizada: 1403479569298
+El tiempo que lleba en ejecucion Ejecutor-1 es: 1997
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=0}
+
+
+EL MENSAJE ES: MAL -  El conjunto de Asientos o algunos de ellos ya han sidos Reservados 
+ Comienza: 1403479569295 Finalizada: 1403479569299
+El tiempo que lleba en ejecucion Ejecutor-1 es: 1999
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=1}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479570287 Finalizada: 1403479570295
+El tiempo que lleba en ejecucion Ejecutor-1 es: 2994
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=1}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479570288 Finalizada: 1403479570296
+El tiempo que lleba en ejecucion Ejecutor-1 es: 2996
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=1}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479570289 Finalizada: 1403479570303
+El tiempo que lleba en ejecucion Ejecutor-1 es: 3003
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=1}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479570289 Finalizada: 1403479570305
+El tiempo que lleba en ejecucion Ejecutor-1 es: 3004
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=1}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479570292 Finalizada: 1403479570306
+El tiempo que lleba en ejecucion Ejecutor-1 es: 3005
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=1}
+
+
+EL MENSAJE ES: MAL -  El conjunto de Asientos o algunos de ellos ya han sidos Reservados 
+ Comienza: 1403479570294 Finalizada: 1403479570307
+El tiempo que lleba en ejecucion Ejecutor-1 es: 3007
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=1, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=2}
+
+
+EL MENSAJE ES: MAL - El Sector o algunos de los Asientos correspondientes ya han sido Reservados 
+ Comienza: 1403479570297 Finalizada: 1403479570309
+El tiempo que lleba en ejecucion Ejecutor-1 es: 3008
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=2, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=2}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479571287 Finalizada: 1403479571291
+El tiempo que lleba en ejecucion Ejecutor-1 es: 3990
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=2, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=2}
+
+
+EL MENSAJE ES: MAL -  El conjunto de Asientos o algunos de ellos ya han sidos Reservados 
+ Comienza: 1403479571291 Finalizada: 1403479571292
+El tiempo que lleba en ejecucion Ejecutor-1 es: 3991
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=2, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=3}
+
+
+EL MENSAJE ES: MAL -  El conjunto de Asientos o algunos de ellos ya han sidos Reservados 
+ Comienza: 1403479571293 Finalizada: 1403479571293
+El tiempo que lleba en ejecucion Ejecutor-1 es: 3992
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=2, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=4}
+
+
+EL MENSAJE ES: MAL -  El conjunto de Asientos o algunos de ellos ya han sidos Reservados 
+ Comienza: 1403479571295 Finalizada: 1403479571295
+El tiempo que lleba en ejecucion Ejecutor-1 es: 3995
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=2, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=5}
+
+
+EL MENSAJE ES: MAL - El Sector o algunos de los Asientos correspondientes ya han sido Reservados 
+ Comienza: 1403479571303 Finalizada: 1403479571309
+El tiempo que lleba en ejecucion Ejecutor-1 es: 4009
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=3, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=5}
+
+
+EL MENSAJE ES: MAL -  El conjunto de Asientos o algunos de ellos ya han sidos Reservados 
+ Comienza: 1403479572293 Finalizada: 1403479572293
+El tiempo que lleba en ejecucion Ejecutor-1 es: 4993
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=3, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=6}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479572288 Finalizada: 1403479572294
+El tiempo que lleba en ejecucion Ejecutor-1 es: 4994
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=3, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=6}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479572287 Finalizada: 1403479572296
+El tiempo que lleba en ejecucion Ejecutor-1 es: 4995
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=3, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=6}
+
+
+EL MENSAJE ES: BIEN - Reserva realizada con Exito : 
+ Comienza: 1403479572289 Finalizada: 1403479572297
+El tiempo que lleba en ejecucion Ejecutor-1 es: 4996
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=3, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=6}
+
+
+EL MENSAJE ES: MAL -  El conjunto de Asientos o algunos de ellos ya han sidos Reservados 
+ Comienza: 1403479573292 Finalizada: 1403479573292
+El tiempo que lleba en ejecucion Ejecutor-1 es: 5991
+CANTIDAD DE FALLOS AL RESERVAR : {Reserva Sector=3, Reserva Asiento=0, Reserva Fila=0, Reserva Asientos=7}
+
+

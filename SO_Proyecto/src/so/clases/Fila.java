@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map.Entry;
 
-/**
- * @author usuario
- *
- */
 public class Fila {
 	private String nombre;						// Nombre de la Fila.
 	private String Sector;						// Sector al que pertenece.

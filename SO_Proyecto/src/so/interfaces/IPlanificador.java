@@ -17,5 +17,12 @@ public interface IPlanificador {
 	 * @return - Reserva de mayor prioridad.
 	 */
 	Reserva Obtener();
+	
+	/**
+	 * Obtener el nombre del planificador.
+	 * 
+	 * @return - Retorna el nombre.
+	 */
+	String getName();
 
 }

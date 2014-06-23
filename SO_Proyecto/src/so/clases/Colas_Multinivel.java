@@ -5,11 +5,18 @@ import so.interfaces.IPlanificador;
 
 public class Colas_Multinivel implements IPlanificador {
 	
-	private ArrayList<Reserva> lista_nivel_uno;
-	private ArrayList<Reserva> lista_nivel_dos;
-	private ArrayList<Reserva> lista_nivel_tres;
+	private String nombre;							// Nombre del Planificador
+	private ArrayList<Reserva> lista_nivel_uno;		// Lista de nivel 1
+	private ArrayList<Reserva> lista_nivel_dos;		// Lista de nivel 2
+	private ArrayList<Reserva> lista_nivel_tres;	// Lista de nivel 3
 
-	public Colas_Multinivel() {
+	/**
+	 * Constructor de Colas Multinivel.
+	 * 
+	 * @param nombre - El nombre.
+	 */
+	public Colas_Multinivel(String nombre) {
+		this.nombre = nombre;
 		this.lista_nivel_uno = new ArrayList<Reserva>();
 		this.lista_nivel_dos = new ArrayList<Reserva>();
 		this.lista_nivel_tres = new ArrayList<Reserva>();
@@ -137,5 +144,10 @@ public class Colas_Multinivel implements IPlanificador {
 			// No hay nada en la lista.
 			return null;
 		}
+	}
+
+	@Override
+	public String getName() {
+		return this.nombre;
 	}
 }

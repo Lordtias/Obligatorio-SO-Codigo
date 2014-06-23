@@ -1,6 +1,3 @@
-/**
- * 
- */
 package so.hilos;
 
 import java.text.DateFormat;
@@ -51,7 +48,7 @@ public abstract class Punto_De_Venta extends Thread {
 			switch (Integer.parseInt(dato[0])) {
 			
 			case 1:// Reserva de Sector.
-				lista_reservas.add(new Reserva(Long.parseLong((dato[1])),
+				lista_reservas.add(new Reserva(nombre, Long.parseLong((dato[1])),
 						dato[2],
 						Boolean.valueOf(dato[3]),
 						dato[4],
@@ -59,7 +56,7 @@ public abstract class Punto_De_Venta extends Thread {
 				break;
 				
 			case 2:// Reserva de una Fila en un Sector.
-				lista_reservas.add(new Reserva(Long.parseLong((dato[1])),
+				lista_reservas.add(new Reserva(nombre, Long.parseLong((dato[1])),
 						dato[2],
 						Boolean.valueOf(dato[3]),
 						dato[4],
@@ -69,7 +66,7 @@ public abstract class Punto_De_Venta extends Thread {
 				break;
 				
 			case 3:// Reserva de un conjunto de Asientos.
-				lista_reservas.add(new Reserva(Long.parseLong((dato[1])),
+				lista_reservas.add(new Reserva(nombre, Long.parseLong((dato[1])),
 						dato[2],
 						Boolean.valueOf(dato[3]),
 						dato[4],
@@ -80,7 +77,7 @@ public abstract class Punto_De_Venta extends Thread {
 				break;
 				
 			case 4:// Reserva de una Asiento especifico.
-				lista_reservas.add(new Reserva(Long.parseLong((dato[1])),
+				lista_reservas.add(new Reserva(nombre, Long.parseLong((dato[1])),
 						dato[2],
 						Boolean.valueOf(dato[3]),
 						dato[4],
@@ -161,7 +158,7 @@ public abstract class Punto_De_Venta extends Thread {
 	}
 
 	/**
-	 * Muestra por consola las Reservas enla lista de Reservas.
+	 * Muestra por consola las Reservas en la lista de Reservas.
 	 */
 	public void Ver_reservas(){
 		for (Reserva a : lista_reservas) {
@@ -170,7 +167,6 @@ public abstract class Punto_De_Venta extends Thread {
 		}
 	}
 
-	
 	/**
 	 * Run del Hilo.
 	 */
@@ -178,7 +174,7 @@ public abstract class Punto_De_Venta extends Thread {
 	public void run() {
 		while(! lista_reservas.isEmpty()){
 			for (Reserva R : lista_reservas) {
-				if (R.tiempo >= System.currentTimeMillis()) {
+				if (R.tiempo <= System.currentTimeMillis()) {
 					pivote.Enviar_Reserva(R);
 					lista_reservas.remove(R);
 					break;
